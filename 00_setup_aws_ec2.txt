@@ -1,0 +1,20 @@
+Set Up MLflow Server on AWS EC2:
+
+File: Commands+to+run+on+EC2+terminal.txt
+Purpose: Configures an EC2 Ubuntu instance to run an MLflow tracking server with SQLite as the backend store and S3 for artifacts.
+Action:
+
+Launch an EC2 instance (e.g., t2.micro, Ubuntu 20.04/22.04) in us-east-1.
+Ensure the security group allows inbound traffic on port 5000 (for MLflow UI).
+SSH into the instance and run:
+bashsudo apt update
+sudo apt install python3-pip
+sudo pip3 install pipenv virtualenv
+mkdir mlflow
+cd mlflow
+pipenv install mlflow awscli boto3 setuptools
+pipenv shell
+aws configure  # Enter AWS credentials (Access Key, Secret Key, region: us-east-1)
+mlflow server -h 0.0.0.0 --backend-store-uri sqlite:///mlflow.db --default-artifact-root s3://mlflow-project-artifacts
+
+Access the MLflow UI at http://<ec2-public-ip>:5000.

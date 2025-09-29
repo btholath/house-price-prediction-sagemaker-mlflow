@@ -1,0 +1,38 @@
+Objective
+Build a a scalable and reproducible machine learning pipeline to achieve a robust, cloud-integrated ML workflow for house price prediction, with experiment tracking and production-ready deployment.
+
+The pipeline:
+1) Preprocesses data using KNN imputation for numerical features and mode imputation for categorical features, followed by one-hot encoding.
+
+2) Trains multiple models (Ridge, ElasticNet, XGBoost) with hyperparameter tuning, logging metrics, parameters, and models to MLflow for experiment tracking.
+
+3) Deploys the best model (XGBoost in this case) to AWS SageMaker for production use.
+
+4) Performs inference on test data using the deployed SageMaker endpoint.
+
+5) Tracks experiments using an MLflow server hosted on an AWS EC2 Ubuntu instance, with artifacts stored in S3.
+
+
+
+
+Execution and Usage Summary
+
+1) GitHub Setup: Initializes version control for reproducibility.
+2) EC2 MLflow Server: Tracks experiments and stores artifacts in S3.
+3) Data Preprocessing: data.py prepares data for training and inference.
+4) Local Training:
+    run.py
+    MLproject
+    train.py
+    params.py
+    utils.py train and log ElasticNet models.
+5) SageMaker Training:
+    sagemaker_train.py trains XGBoost on SageMaker.
+6) Deployment:
+    deploy.py deploys the XGBoost model to a SageMaker endpoint.
+7) Inference:
+    test.py performs predictions using the deployed endpoint.
+
+
+Future Enhancements
+SageMaker training setup, model comparison scripts, or GitHub Actions for CI/CD

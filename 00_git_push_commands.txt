@@ -1,0 +1,6 @@
+Push files to GitHub
+git init
+git add .
+git commit -m "Initial commit for house price prediction project"
+git remote add origin https://github.com/<your-username>/house-price-prediction-sagemaker-mlflow.git
+git push -u origin main
